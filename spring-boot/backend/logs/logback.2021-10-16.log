@@ -15,3 +15,4 @@ Identify and stop the process that's listening on port 8080 or configure this ap
 
 01:00:29.398 default [http-nio-8080-exec-2] ERROR c.e.b.exception.ValidateException - [400 BAD_REQUEST] exception test.
 10:10:54.288 default [http-nio-8080-exec-2] ERROR c.e.b.exception.ValidateException - [400 BAD_REQUEST] exception test.
+10:21:32.379 default [http-nio-8080-exec-1] ERROR c.e.b.exception.ValidateException - [400 BAD_REQUEST] exception test.
