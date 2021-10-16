@@ -1,0 +1,17 @@
+00:59:39.382 default [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+00:59:39.483 default [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+01:00:29.398 default [http-nio-8080-exec-2] ERROR c.e.b.exception.ValidateException - [400 BAD_REQUEST] exception test.
+10:10:54.288 default [http-nio-8080-exec-2] ERROR c.e.b.exception.ValidateException - [400 BAD_REQUEST] exception test.
