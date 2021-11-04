@@ -4,7 +4,7 @@
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <!--用ThresholdFilter過濾ERROR以上級別才顯示在terminal上~-->
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>ERROR</level>
+            <level>INFO</level>
         </filter>
         <encoder>
             <!-- 印出Log的格式 -->
@@ -17,7 +17,7 @@
             <pattern>%d{YYYY-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
-    <!--输出到文件-->
+    <!--輸出到文件-->
     <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- 輸出文件的位置，以每一天做切割-->
