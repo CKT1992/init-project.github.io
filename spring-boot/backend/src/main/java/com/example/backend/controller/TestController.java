@@ -2,16 +2,17 @@ package com.example.backend.controller;
 
 import javax.validation.Valid;
 
+import com.example.backend.entity.TestModel;
 import com.example.backend.exception.ValidateException;
-import com.example.backend.model.ResponseFormat;
-import com.example.backend.model.TestModel;
 import com.example.backend.repos.TestRepository;
 import com.example.backend.service.ResponseService;
+import com.example.backend.viewModel.ResponseFormat;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,6 +27,7 @@ import springfox.documentation.annotations.ApiIgnore;
 
 @RestController
 @ApiIgnore
+@CrossOrigin(origins = "http://localhost:9000")
 @Api(tags = "Test")
 @RequestMapping(path = "/api/v1/test", produces = { MediaType.APPLICATION_JSON_VALUE })
 public class TestController {
@@ -36,9 +38,9 @@ public class TestController {
     @Autowired
     private TestRepository testRepository;
 
-    /*************
+    /**************
      *** RETURN ***
-     *************/
+     **************/
 
     @GetMapping(value = "response")
     public ResponseEntity<ResponseFormat> response() {
@@ -50,9 +52,9 @@ public class TestController {
         throw new ValidateException(HttpStatus.BAD_REQUEST, "exception test.", null);
     }
 
-    /***************
+    /****************
      *** JPA CRUD ***
-     ***************/
+     ****************/
 
     @GetMapping(value = "getdata")
     public ResponseEntity<ResponseFormat> getdata() {

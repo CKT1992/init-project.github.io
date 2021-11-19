@@ -1,8 +1,8 @@
 package com.example.backend.service.impl;
 
 import com.example.backend.exception.ValidateException;
-import com.example.backend.model.ResponseFormat;
 import com.example.backend.service.ResponseService;
+import com.example.backend.viewModel.ResponseFormat;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,6 +1,6 @@
 package com.example.backend.service;
 
-import com.example.backend.model.ResponseFormat;
+import com.example.backend.viewModel.ResponseFormat;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
