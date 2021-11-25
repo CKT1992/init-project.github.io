@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.example.backend.entity.AccountModel;
 import com.example.backend.exception.ValidateException;
-import com.example.backend.repos.AccountRepository;
+import com.example.backend.repo.AccountRepository;
 import com.example.backend.service.AccountService;
 import com.example.backend.service.AuthService;
 import com.example.backend.service.ResponseService;

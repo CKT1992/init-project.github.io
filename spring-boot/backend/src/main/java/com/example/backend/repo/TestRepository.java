@@ -1,4 +1,4 @@
-package com.example.backend.repos;
+package com.example.backend.repo;
 
 import com.example.backend.entity.TestModel;
 

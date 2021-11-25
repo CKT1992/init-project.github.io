@@ -4,7 +4,7 @@ import javax.validation.Valid;
 
 import com.example.backend.entity.TestModel;
 import com.example.backend.exception.ValidateException;
-import com.example.backend.repos.TestRepository;
+import com.example.backend.repo.TestRepository;
 import com.example.backend.service.ResponseService;
 import com.example.backend.viewModel.ResponseFormat;
 

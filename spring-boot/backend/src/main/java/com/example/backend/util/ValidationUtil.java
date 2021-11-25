@@ -10,7 +10,6 @@ import java.util.regex.Pattern;
 import com.nimbusds.jose.JWEObject;
 import com.nimbusds.jose.crypto.DirectDecrypter;
 
-import org.springframework.beans.factory.annotation.Value;
 
 public class ValidationUtil {
     static byte[] key = {102,29,-63,13,77,-48,-101,123,69,38,87,3,-37,121,-52,83,39,49,117,-62,55,71,122,74,94,21,81,-106,-19,15,9,70};
