@@ -2,7 +2,6 @@ package com.example.backend.controller;
 
 import com.example.backend.service.AuthService;
 import com.example.backend.service.ResponseService;
-import com.example.backend.viewModel.DecodeModel;
 import com.example.backend.viewModel.LoginModel;
 import com.example.backend.viewModel.ResponseFormat;
 import com.example.backend.viewModel.TokenModel;

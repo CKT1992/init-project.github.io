@@ -1,7 +1,5 @@
 package com.example.backend.viewModel;
 
-import java.math.BigInteger;
-
 public class HeartbeatModel {
     private Integer id;
     private String time;

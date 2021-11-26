@@ -1,13 +1,11 @@
 package com.example.backend.service.impl;
 
-import java.util.Date;
 import java.util.logging.Logger;
 import java.text.ParseException;
 
 import com.example.backend.exception.ValidateException;
 import com.example.backend.service.AuthService;
 import com.example.backend.viewModel.DecodeModel;
-import com.example.backend.viewModel.LoginModel;
 import com.example.backend.viewModel.TokenModel;
 import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.*;

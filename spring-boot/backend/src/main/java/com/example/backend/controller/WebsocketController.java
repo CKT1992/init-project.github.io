@@ -15,28 +15,27 @@ import javax.websocket.CloseReason;
 import javax.websocket.EndpointConfig;
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
-import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
 import com.example.backend.exception.ValidateException;
-import com.example.backend.service.ResponseService;
 import com.example.backend.util.WebSocketUtil;
 import com.example.backend.viewModel.HeartbeatModel;
 import com.example.backend.viewModel.TokenModel;
 import com.google.gson.Gson;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
+import io.swagger.annotations.Api;
 
 @Controller
 @ServerEndpoint("/")
+@Api(tags = "Websocket")
+@CrossOrigin(origins = "http://localhost:9000")
 public class WebsocketController {
-
-    @Autowired
-    private ResponseService responseService;
 
     @OnOpen
     public void onOpen(Session session, EndpointConfig config) throws IOException, InterruptedException {
@@ -62,12 +61,9 @@ public class WebsocketController {
         if (loginConn.getResponseCode() == 200) {
             br = new BufferedReader(new InputStreamReader(loginConn.getInputStream()));
             token = new Gson().fromJson(br.readLine(), TokenModel.class).getToken();
-
         } else {
             throw new ValidateException(HttpStatus.BAD_REQUEST, loginConn.getErrorStream().toString(), null);
         }
-
-        WebSocketUtil.addSession(session);
         while (token != null) {
             // 做事
             String today = new SimpleDateFormat("yyyy-MM-dd").format(new Date().getTime());
@@ -84,25 +80,36 @@ public class WebsocketController {
                 // 拆解資料
                 HeartbeatModel[] list = new Gson().fromJson(hbbr.readLine(), HeartbeatModel[].class);
                 List<HeartbeatModel> hrList = Arrays.asList(list);
-                WebSocketUtil.broadcast("{\"heartRate\":" + hrList.get(0).getHeartRate() + "}");
+                if (hrList.size() != 0) {
+                    WebSocketUtil.broadcast(session, "{\"heartRate\":" + hrList.get(0).getHeartRate() + "}");
+                    WebSocketUtil.removeSession(session);
+                } else {
+                    WebSocketUtil.broadcast(session, "{\"heartRate\":null}");
+                    WebSocketUtil.removeSession(session);
+                }
             }
-
             Thread.sleep(1000);
         }
     }
 
-    @OnMessage
-    public void onMessage(Session session, String message) {
-        WebSocketUtil.broadcast(message);
-    }
-
     @OnClose
     public void onClose(Session session, CloseReason closeReason) {
-        WebSocketUtil.broadcast(session.getId());
+        try {
+            session.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         WebSocketUtil.removeSession(session);
     }
 
     @OnError
     public void onError(Session session, Throwable throwable) {
+        try {
+            session.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        throwable.printStackTrace();
+        WebSocketUtil.removeSession(session);
     }
 }

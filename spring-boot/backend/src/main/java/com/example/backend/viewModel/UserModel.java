@@ -1,9 +1,7 @@
 package com.example.backend.viewModel;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 import io.swagger.annotations.ApiModelProperty;
 
